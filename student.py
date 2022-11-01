@@ -16,11 +16,11 @@ while True:
     if(choice==1):
         print('student enter selected')
         name=input('enter the name')
-        admno=input("enter admission number")
-        rollno=input('enter rollnumber')
+        admnumber=input("enter admission number")
+        rollnumber=input('enter rollnumber')
         college=input("enter the college name")
-        sql='INSERT INTO `students (`name`, `rollnumber`, `admnumber`, `college`) VALUES (%s,%s,%s,%s)'
-        data=(name,rollno,admno,college)
+        sql='INSERT INTO `students`(`Name`, `rollnumber`, `admnumber`, `college`) VALUES (%s,%s,%s,%s)'
+        data=(name,rollnumber,admnumber,college)
         mycursor.execute(sql,data)
         mydb.commit()
         print("view student")
