@@ -1,4 +1,6 @@
-from secrets import choice
+import mysql.connector
+mydb=mysql.connector.connect(host='localhost',user='root',password='',database='studentdb')
+mycursor = mydb.cursor()
 
 
 while True:
@@ -13,7 +15,14 @@ while True:
     choice=int(input('enter the option:'))
     if(choice==1):
         print('student enter selected')
-    elif(choice==2):
+        name=input('enter the name')
+        admno=input("enter admission number")
+        rollno=input('enter rollnumber')
+        college=input("enter the college name")
+        sql='INSERT INTO `students (`name`, `rollnumber`, `admnumber`, `college`) VALUES (%s,%s,%s,%s)'
+        data=(name,rollno,admno,college)
+        mycursor.execute(sql,data)
+        mydb.commit()
         print("view student")
     elif(choice==3):
         print('search a student')
@@ -22,4 +31,4 @@ while True:
     elif(choice==5):
         print('delete the student')
     elif(choice==6):
-        break   
+        break  
